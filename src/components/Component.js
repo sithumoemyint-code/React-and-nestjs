@@ -33,14 +33,13 @@ function Component() {
     const [date, setDate] = useState("")
     const [time, setTime] = useState("")
 
-    console.log(data, 'infoinfo');
-
     useEffect(() => {
         setDatas(data)
     }, [data])
 
     const handleClick = () => {
-        createUser({ variables: { name, remark, date}})
+        createUser({ variables: { name, remark}})
+        window.location.reload()
     }
     
 
@@ -52,8 +51,8 @@ function Component() {
             <div>
                 <input type="text" placeholder='name' onChange={e => setName(e.target.value)} />
                 <input type="text" placeholder='Remark' onChange={e => setRemark(e.target.value)} /> 
-                <input type="text" placeholder='date' onChange={e => setDate(e.target.value)} /> 
-                <input type="text" placeholder='time' onChange={e => setTime(e.target.value)} />
+                {/* <input type="text" placeholder='date' onChange={e => setDate(e.target.value)} /> 
+                <input type="text" placeholder='time' onChange={e => setTime(e.target.value)} /> */}
                 <button onClick={handleClick}>Create User</button>
             </div>
 
@@ -62,7 +61,6 @@ function Component() {
                     <div key={da.ID}>
                         <h3>{da.To_Do_Name}</h3>
                         <p>{da.Remark}</p>
-                        <span>{da.To_Do_Date} - {da.To_Do_Time}</span>
                     </div>
                 ))}
             </div>
